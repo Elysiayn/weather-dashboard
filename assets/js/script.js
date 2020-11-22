@@ -7,22 +7,55 @@
 //   console.log(data)
 // }) 
 
-var apiKey= "08aa83b741b9cdfacd456989d2913cdf"
+var apiKey = "08aa83b741b9cdfacd456989d2913cdf"
+var cityList = []
+var searchQuery; 
+
+var searchFormEl = document.querySelector(".form-inline");
+var searchInputEl = document.querySelector("#city-input");
+
 
 
 //weather search function
 var weatherSearch = function (searchQuery) {
-  fetch("http://api.openweathermap.org/data/2.5/weather?q=" + searchQuery + "&appid=" + apiKey)
+  fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + searchQuery + "&appid=" + apiKey)
   .then(function(response){
-      return response.json()
-    }) 
-    .then(function(data){
-      console.log(data)
-    }) 
+    if (response.ok) {
+        response.json()then(function(data) {
+          //variable to hold lattitude and longittude 
+          var cityLon = data.searchQuery.coord.lon
+          var cityLat = data.searchQuery.coord.lat
+          return fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial" + "&appid=" + apiKey)
+          .then(function(response2){
+            response2.json().then(function(data) {
+              getCityForecast(data)
+            })
+          })
+          getCityForecast(data)
+        })
+      }
+     else {
+      alert("Error: " + response.statusText);
+    }
+  })
+  .catch(function(error) {
+    alert("Network Connection Error");
+  })
 }
+
+//displays city info
+
+  
+
+var formSubmitHandler = function (event) {
+  event.preventDefault();
+  console.log (events);
+};
+
 
 
 //function call
-weatherSearch("Jacksonville");
+weatherSearch();
+searchFormEl.addEventListener("submit", formSubmitHandler);
 
 
