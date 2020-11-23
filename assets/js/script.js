@@ -11,7 +11,7 @@ var apiKey = "08aa83b741b9cdfacd456989d2913cdf"
 var cityList = []
 var currentCity;
 
-var searchInputEl = document.querySelector("#city-name")
+var searchInputEl = document.querySelector("#city-input")
 var searchFormEl = document.querySelector(".form-inline")
 var searchHistory = document.querySelector(".recent-history")
 var futureWeather = document.querySelector(".forecast")
