@@ -52,6 +52,7 @@ var getWeather = function(city) {
 // saves searched cities to local storage
 function storedHistory() {
     localStorage.setItem("cities", JSON.stringify(cityList));
+    loadCities();
 }
 
 // form handler for retrieving city object
@@ -217,7 +218,7 @@ var loadCities = function() {
 
 
 //function calls
-loadCities();
+storedHistory ()
 
 // Event Listeners
 searchHistory.addEventListener("click", function(event){
