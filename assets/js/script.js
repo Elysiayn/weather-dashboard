@@ -43,6 +43,7 @@ var searchQuery = function(city) {
 
 // saves searched cities to local storage
 function storedHistory() {
+    storedHistory.innerHTML = ""
     localStorage.setItem("cities", JSON.stringify(cityList));
     loadCities();
 }
@@ -200,6 +201,7 @@ var addSearchedCity = function(cityName) {
 
 // loads searched history from local storage
 var loadCities = function() {
+    searchHistory.innerHTML = ""
     var cityArray = JSON.parse(localStorage.getItem("cities"));
     console.log(typeof cityArray)
     
