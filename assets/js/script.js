@@ -32,7 +32,7 @@ var getWeather = function(city) {
                 var cityLat = data.city.coord.lat
                 var cityLon = data.city.coord.lon
                 return fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" 
-                + cityLat + "&lon=" + cityLon + "&units=imperial" + "&appid=" + id)
+                + cityLat + "&lon=" + cityLon + "&units=imperial" + "&appid=" + apiKey)
                 .then(function(response2) {
                     response2.json().then(function(data) {
                         getCityForecast(data)
