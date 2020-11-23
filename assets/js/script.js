@@ -125,7 +125,7 @@ var getUvi = function(city) {
 
     var uviEl = document.createElement("span")
     uviEl.setAttribute = ("style", "bold")
-    uviEl.innerHTML = "<h4>UVI: " + uvi + "</h4>"
+    uviEl.innerHTML = "<h4>UV Index: " + uvi + "</h4>"
     
     // change color based on uvi value
     if (uvi < 3 ) {

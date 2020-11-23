@@ -1,2 +1,7 @@
 .form-input , .btn { 
-    display: inline-block;}
+    display: inline-block;
+}
+
+    .recent-history {
+        padding-left: 0;
+      }
