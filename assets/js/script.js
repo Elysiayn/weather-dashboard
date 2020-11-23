@@ -1,11 +1,3 @@
-//basic API call example
-// fetch("https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=hourly,daily&appid=08aa83b741b9cdfacd456989d2913cdf")
-// .then(function(response){
-// return response.json()
-// }) 
-// .then(function(data){
-//   console.log(data)
-// }) 
 
 var apiKey = "08aa83b741b9cdfacd456989d2913cdf"
 var cityList = []
@@ -20,7 +12,7 @@ let today = moment().format("MM/DD/YYYY")
 
 
 // fetch api data function
-var getWeather = function(city) {
+var searchQuery = function(city) {
     var apiUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey
     currentCity = city
 
@@ -63,7 +55,7 @@ var formSubmitHandler = function(event) {
     var cityName = searchInputEl.value.trim()
 
     if (cityName) {
-        getWeather(cityName)
+        searchQuery(cityName)
         searchInputEl.value = "";
         cityList.push(cityName)
         addSearchedCity(cityName)
@@ -87,7 +79,7 @@ var getCityForecast = function(city) {
     var iconUrl = "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png"
     
     // define info needed from data
-    var temp = city.current.temp + " F"
+    var temp = city.current.temp + "F"
     var humidity = city.current.humidity
     var windSpeed = city.current.wind_speed
 
@@ -224,7 +216,7 @@ storedHistory ()
 searchHistory.addEventListener("click", function(event){
     var searchHistoryBtn = event.target.attributes.getNamedItem("data-city").value
 
-    getWeather(searchHistoryBtn)
+    searchQuery(searchHistoryBtn)
 })
 
 searchFormEl.addEventListener("submit", formSubmitHandler)
