@@ -192,7 +192,7 @@ var addSearchedCity = function(cityName) {
     buttonEl.setAttribute("type", "button")
     buttonEl.setAttribute("data-city", cityName)
     buttonEl.classList = "btn btn-secondary"
-    buttonEl.textContent = cityName.toLowerCase()
+    buttonEl.textContent = cityName.toUpperCase()
 
     searchHistory.appendChild(buttonEl)
 }
